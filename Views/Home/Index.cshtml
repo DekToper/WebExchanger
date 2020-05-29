@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <link rel="stylesheet" href="~/styles/divStyle.css">
+    <div class="parent">
+        <h1 style="margin-left: 20px">Exchanger</h1>
+
+        <form action="History/Index">
+            <div>
+                <button style="margin-left: 600px; background-color:darkgray" onclick="">
+                    History
+                </button>
+            </div>
+        </form>
+
+        <form method="post" >
+            <div class="child" style="width: 176px; margin-left: 45px">
+                <p style="color:gray">Amount:</p>
+                <input value="@ViewBag.FromAmount" autocapitalize="off" maxlength="100" required="required"
+                       size="50" type="number" name="FromAmount" id="FromAmount_id" autocomplete="off" spellcheck="false">
+            </div>
+
+
+            <div class="child" style=" width: 100px">
+                <select style="width: 100px" name="FromCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                </select>
+            </div>
+
+            <div class="child" style=" width: 176px">
+                <p style="background-color:white" autocapitalize="off" maxlength="100" required="required"
+                   size="50" name="ToAmount" id="ToAmount_id" autocomplete="off" spellcheck="false">@ViewBag.Result</p>
+            </div>
+
+            <div class="child" style=" width: 100px">
+                <select style="width: 100px" name="ToCurrency">
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="GBP">GBP</option>
+                </select>
+            </div>
+
+            <div class="child">
+                <input type="submit" style="margin:auto 20px; background-color:darkgray" value="Exchange" />
+            </div>
+            <em style="color:red">@ViewBag.Error</em>
+        </form>
+    </div>
+
+</body>
+</html>

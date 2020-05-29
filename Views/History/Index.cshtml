@@ -1,0 +1,132 @@
+﻿@using WebExchanger.Domain.Entities
+@model IQueryable<ExchangeHistory>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form action="../../">
+        <div>
+            <button style="background-color:darkgray" onclick="">
+                Back
+            </button>
+        </div>
+
+    </form>
+    <form method="post">
+        <div>
+            <input maxlength="100" type="text" name="SearchBox" style="display:inline-block">
+            <select style="width: 100px; display:inline-block" name="SearchSelect">
+                <option value="Id">
+                    Id
+                </option>
+                <option value="FromAmount">
+                    FromAmount
+                </option>
+                <option value="FromCurrency">
+                    FromCurrency
+                </option>
+                <option value="ToAmount">
+                    ToAmount
+                </option>
+                <option value="ToCurrency">
+                    ToCurrency
+                </option>
+                <option value="Date">
+                    Date
+                </option>
+            </select>
+            <input type="submit" style="margin-left: 250px; background-color:darkgray" value="Search">
+        </div>
+    </form>
+
+    <form method="post">
+        <input type="submit" style="background-color:darkgray" value="Update">
+    </form>
+
+        <div>
+            <table border="1" style="border-color:black">
+                @if (ViewBag.Result == null)
+                {
+                    <tr>
+                        <td>
+                            Id
+                        </td>
+                        <td>
+                            FromAmount
+                        </td>
+                        <td>
+                            FromCurrency
+                        </td>
+                        <td>
+                            ToAmount
+                        </td>
+                        <td>
+                            ToCurrency
+                        </td>
+                        <td>
+                            Date
+                        </td>
+                    </tr>
+                    @foreach (ExchangeHistory history in Model)
+                    {
+                        <tr>
+                            <td>
+                                @history.Id
+                            </td>
+                            <td>
+                                @history.FromAmount
+                            </td>
+                            <td>
+                                @history.FromCurrency
+                            </td>
+                            <td>
+                                @history.ToAmount
+                            </td>
+                            <td>
+                                @history.ToCurrency
+                            </td>
+                            <td>
+                                @history.Date
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    ExchangeHistory history = ViewBag.Result as ExchangeHistory;
+                    <tr>
+                        <td>
+                            @history.Id
+                        </td>
+                        <td>
+                            @history.FromAmount
+                        </td>
+                        <td>
+                            @history.FromCurrency
+                        </td>
+                        <td>
+                            @history.ToAmount
+                        </td>
+                        <td>
+                            @history.ToCurrency
+                        </td>
+                        <td>
+                            @history.Date
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+</body>
+</html>
