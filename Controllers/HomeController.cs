@@ -21,6 +21,7 @@ namespace WebExchanger.Controllers
         public IActionResult Index()
         {
             ViewBag.Result = 0;
+            ViewBag.Rate = "";
             ViewBag.FromAmount = 0;
             return View();
         }
@@ -31,13 +32,16 @@ namespace WebExchanger.Controllers
             if (FromCurrency == ToCurrency)
             {
                 ViewBag.Result = 0;
+                ViewBag.Rate = "";
                 ViewBag.FromAmount = FromAmount;
                 ViewBag.Error = "The currency you want to exchange is the same as the currency you want to receive.";
             }
             else
             {
                 ViewBag.FromAmount = FromAmount;
-                ViewBag.Result = FromAmount*HttpClientHandler.GetExchangeRateAsync(FromCurrency,ToCurrency);
+                double rate = HttpClientHandler.GetExchangeRateAsync(FromCurrency, ToCurrency);
+                ViewBag.Result = FromAmount*rate;
+                ViewBag.Rate = $"•1 {FromCurrency} = {rate} {ToCurrency}";
 
                 ExchangeHistory exchangeHistory = new ExchangeHistory();
                 exchangeHistory.Date = DateTime.UtcNow;

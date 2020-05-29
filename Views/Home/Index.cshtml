@@ -13,12 +13,14 @@
 </head>
 <body>
     <link rel="stylesheet" href="~/styles/divStyle.css">
-    <div class="parent">
+    <div class="parent" style="height: 300px;">
         <h1 style="margin-left: 20px">Exchanger</h1>
+
+        <p style=" margin-left: 20px ;display:inline-block">@ViewBag.Rate</p>
 
         <form action="History/Index">
             <div>
-                <button style="margin-left: 600px; background-color:darkgray" onclick="">
+                <button style="margin-left: 20px; background-color:darkgray" onclick="">
                     History
                 </button>
             </div>

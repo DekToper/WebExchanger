@@ -54,28 +54,29 @@
 
         <div>
             <table border="1" style="border-color:black">
+
+                <tr>
+                    <td>
+                        Id
+                    </td>
+                    <td>
+                        FromAmount
+                    </td>
+                    <td>
+                        FromCurrency
+                    </td>
+                    <td>
+                        ToAmount
+                    </td>
+                    <td>
+                        ToCurrency
+                    </td>
+                    <td>
+                        Date
+                    </td>
+                </tr>
                 @if (ViewBag.Result == null)
                 {
-                    <tr>
-                        <td>
-                            Id
-                        </td>
-                        <td>
-                            FromAmount
-                        </td>
-                        <td>
-                            FromCurrency
-                        </td>
-                        <td>
-                            ToAmount
-                        </td>
-                        <td>
-                            ToCurrency
-                        </td>
-                        <td>
-                            Date
-                        </td>
-                    </tr>
                     @foreach (ExchangeHistory history in Model)
                     {
                         <tr>
